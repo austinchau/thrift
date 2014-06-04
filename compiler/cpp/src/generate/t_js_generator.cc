@@ -261,9 +261,11 @@ void t_js_generator::init_generator() {
   f_types_.open(f_types_name.c_str());
 
   // Print header
-  f_types_ <<
-    autogen_comment() <<
-    js_includes() << endl;
+  /* FIX 0.9.0 js includes issue */
+     f_types_ <<
+       autogen_comment() <<
+       js_includes() << endl <<
+       render_includes() << endl;
 
   if (gen_node_) {
     f_types_ << "var ttypes = module.exports = {};" << endl;
